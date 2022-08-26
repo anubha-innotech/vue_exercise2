@@ -5,8 +5,8 @@
     <button @click="focusBtn">Focus</button>
     <br />
     <button @click="show = !show">Modal</button>
-    <div class="prompt" v-if="show">
-      <div id="modal-box">
+    <div class="prompt" v-if="show" @click="show = !show">
+      <div id="modal-box" @click="show = !show">
         <Modal title="Sign up for the giveaway!" content="Grab your ninja swag for half price!" theme="sale"
           ref="modal">
           <template v-slot:links>
@@ -34,7 +34,6 @@ export default {
       this.$refs.input.focus();
       console.log("focus");
     },
-
   }
 }
 </script>
@@ -47,8 +46,7 @@ export default {
 
 .main {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
 }
 
@@ -57,8 +55,8 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,15 +86,15 @@ export default {
 button {
   margin: 5px 0px;
   padding: 5px 10px;
-  background-color:dodgerblue;
+  background-color: dodgerblue;
   color: white;
   font-size: 1rem;
   border: 1px solid dodgerblue;
 }
-input{
+
+input {
   font-size: 1rem;
   padding: 5px;
-
 }
 </style>
 
