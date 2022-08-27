@@ -6,7 +6,7 @@
     <br />
     <Modal title="Sign up for the giveaway!" content="Grab your ninja swag for half price!" theme="sale" ref="modal">
       <template v-slot:links>
-        <a href="#" id="slot-link">Slot Button</a>
+        <a href="#" id="slot-link" @click="show = !show">Close</a>
       </template>
     </Modal>
   </div>
@@ -20,7 +20,6 @@ export default {
   },
   data() {
     return {
-      show: false
     }
   },
   methods: {
@@ -63,12 +62,10 @@ input {
 }
 
 #slot-link {
-  display: block;
-  bottom: 0;
   text-align: center;
   color: white;
   background-color: black;
-  padding: 2px 10px;
+  padding: 4px 20px;
   text-decoration: none;
   font-size: 1.1rem;
   width: 80px;

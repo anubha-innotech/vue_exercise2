@@ -7,13 +7,14 @@
                     <div id="center" :class="{ sale: isValid }">
                         <h1>{{ title }}</h1>
                         <p>{{ content }}</p>
+                        <div @click="show = !show" id="closeDiv">
+                            <slot name="links" v-if="show"></slot>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <slot name="links"></slot>
     </div>
-    <!-- <button @click="getUser(childData)"></button> -->
 </template>
   
 <script>
@@ -22,15 +23,12 @@ export default {
     data() {
         return {
             show: false,
-            childData: "Im child",
         }
     },
     props: {
         title: String,
         content: String,
         theme: String,
-        getUser: Function,
-        show: Boolean
     },
     created() {
         if (this.theme == 'sale') {
@@ -47,8 +45,12 @@ export default {
 
 #center {
     width: 100%;
-    padding: 45px;
+    padding: 45px 45px 5px 45px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 #center h1 {
@@ -64,13 +66,9 @@ export default {
     color: white !important;
 }
 
-.box {
-    display: flex;
-}
 
 #modal-box {
     position: relative;
-    background-color: blue;
 }
 
 .prompt {
@@ -85,5 +83,7 @@ export default {
     align-items: center;
 }
 
-
+#closeDiv {
+    margin: 25px auto 0px auto;
+}
 </style>
