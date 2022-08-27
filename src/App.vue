@@ -6,7 +6,7 @@
     <br />
     <Modal title="Sign up for the giveaway!" content="Grab your ninja swag for half price!" theme="sale" ref="modal">
       <template v-slot:links>
-        <a href="#" id="slot-link" @click="show = !show">Close</a>
+        <a href="#" id="slot-link">Close</a>
       </template>
     </Modal>
   </div>
@@ -27,10 +27,6 @@ export default {
       this.$refs.input.focus();
       console.log("focus");
     },
-    childDataFn(name) {
-      alert(name)
-    }
-
   }
 }
 </script>
