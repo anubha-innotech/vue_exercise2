@@ -1,45 +1,72 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-  </main>
+  <div class="main">
+    <h2>VueJs Exercise 2</h2>
+    <input type="text" ref="input">
+    <button @click="focusBtn">Focus</button>
+    <br />
+    <Modal title="Sign up for the giveaway!" content="Grab your ninja swag for half price!" theme="sale" ref="modal">
+      <template v-slot:links>
+        <a href="#" id="slot-link">Close</a>
+      </template>
+    </Modal>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+import Modal from './components/Modal.vue'
+export default {
+  components: {
+    Modal
+  },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    focusBtn() {
+      this.$refs.input.focus();
+      console.log("focus");
+    },
+  }
+}
+</script>
+
+<style>
+* {
+  margin: 0px;
+  padding: 0;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.main {
+  position: relative;
+  height: 100%;
+  padding: 20px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+button {
+  margin: 5px 0px;
+  padding: 5px 10px;
+  background-color: dodgerblue;
+  color: white;
+  font-size: 1rem;
+  border: 1px solid dodgerblue;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+input {
+  font-size: 1rem;
+  padding: 5px;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+#slot-link {
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 4px 20px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  width: 80px;
+  white-space: nowrap;
 }
 </style>
+
+
