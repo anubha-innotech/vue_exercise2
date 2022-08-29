@@ -2,15 +2,11 @@
     <div>
         <button @click="show = !show">Modal</button>
         <div class="prompt" v-if="show" @click="show = !show">
-            <div id="modal-box" @click="show = !show">
-                <div class="box">
-                    <div id="center" :class="{ sale: isValid }">
-                        <h1>{{ title }}</h1>
-                        <p>{{ content }}</p>
-                        <div @click="show = !show" id="closeDiv">
-                            <slot name="links" v-if="show"></slot>
-                        </div>
-                    </div>
+            <div id="modal-box" :class="{ sale: isValid }" @click.prevent="show = !show">
+                <h1>{{ title }}</h1>
+                <p>{{ content }}</p>
+                <div @click="show = !show" id="closeDiv">
+                    <slot name="links" v-if="show"></slot>
                 </div>
             </div>
         </div>
@@ -41,16 +37,11 @@ export default {
 <style>
 * {
     margin: 0px;
+    padding: 0px;
 }
 
 #center {
-    width: 100%;
-    padding: 45px 45px 5px 45px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    
 }
 
 #center h1 {
@@ -66,9 +57,15 @@ export default {
     color: white !important;
 }
 
-
 #modal-box {
     position: relative;
+    padding: 45px 45px 5px 45px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    display:block;
 }
 
 .prompt {
